@@ -92,13 +92,6 @@ public class FlutterCrispChatPlugin implements FlutterPlugin, MethodCallHandler,
                         if (activity instanceof ChatActivity) {
                             activity.finish(); // directly close if chat is current
                             result.success(null);
-                        } else {
-                            // Try to close if ChatActivity is on top of stack
-                            Intent intent = new Intent(activity, ChatActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            activity.startActivity(intent);
-                            activity.finishActivity(0);
-                            result.success(null);
                         }
                     } catch (Exception e) {
                         result.error("CLOSE_FAILED", e.getMessage(), null);
