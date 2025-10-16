@@ -19,6 +19,11 @@ class MethodChannelFlutterCrispChat extends FlutterCrispChatPlatform {
         'openCrispChat', config.toJson());
   }
 
+  @override
+  Future<void> closeCrispChat() async {
+    await methodChannel.invokeMethod('closeCrispChat');
+  }
+
   /// [resetCrispChatSession] is use to invoke the Method Channel and call native
   /// code with no arguments and this will reset the crisp chat session.
   @override

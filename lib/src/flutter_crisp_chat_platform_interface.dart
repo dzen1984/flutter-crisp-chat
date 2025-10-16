@@ -30,6 +30,10 @@ abstract class FlutterCrispChatPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
+  Future<void> closeCrispChat() async {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
   /// [resetCrispChatSession] is to call native platform and if no implementation
   /// found through error.
   Future<void> resetCrispChatSession() {

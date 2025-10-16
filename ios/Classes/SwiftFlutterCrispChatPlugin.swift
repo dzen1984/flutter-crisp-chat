@@ -72,6 +72,29 @@ public class SwiftFlutterCrispChatPlugin: NSObject, FlutterPlugin, UIApplication
 
             result(nil)
 
+
+        case "closeCrispChat":
+            if let rootVC = UIApplication.shared.connectedScenes
+            .compactMap({ $0 as? UIWindowScene })
+            .flatMap({ $0.windows })
+            .first(where: { $0.isKeyWindow })?.rootViewController {
+
+                // Find the topmost presented VC (could be ChatViewController)
+                var topVC = rootVC
+                while let presented = topVC.presentedViewController {
+                    topVC = presented
+                }
+
+                if topVC is ChatViewController {
+                    topVC.dismiss(animated: true)
+                    result(nil)
+                } else {
+                    result(FlutterError(code: "NO_CHAT", message: "No chat presented", details: nil))
+                }
+            } else {
+                result(FlutterError(code: "NO_ROOT", message: "No root view controller", details: nil))
+            }
+
         case "resetCrispChatSession":
             // Resets the current Crisp chat session
             CrispSDK.session.reset()

@@ -39,6 +39,8 @@ class FlutterCrispChat {
     return FlutterCrispChatPlatform.instance.openCrispChat(config: config);
   }
 
+
+
   /// Resets the current Crisp chat session.
   ///
   /// This method clears any ongoing chat session data, effectively starting fresh.
