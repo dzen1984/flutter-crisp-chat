@@ -39,6 +39,10 @@ class FlutterCrispChat {
     return FlutterCrispChatPlatform.instance.openCrispChat(config: config);
   }
 
+  static Future<void> closeCrispChat() {
+    return FlutterCrispChatPlatform.instance.closeCrispChat();
+  }
+
 
 
   /// Resets the current Crisp chat session.
